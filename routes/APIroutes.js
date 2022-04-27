@@ -5,13 +5,12 @@
     C. DELETE one specifc note*/
     const router = require('express').Router();
     const controller = require('../db.controller.js');
-    const fs = require("fs")
     
      // 1. get all of the notes
     router.get('/notes', (req,res) =>{
         //2. put them into a new file json file is database 
             //controller that houses all of the functions called
-            controller.getNotes()
+            controller.getNotes(req.body)
             .then((notes) => {
                 // if things go well, response is what you expected
                 return res.json(notes);

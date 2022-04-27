@@ -43,7 +43,7 @@ class Controller {
             }
         })
     }
-    // get at the last minite 
+    // BONUS
     deleteNotes () {
            /*parameters: have to have data to write note
         take in notes */
