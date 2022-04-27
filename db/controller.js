@@ -52,7 +52,6 @@ class Controller {
                 throw err;
             } else {
                 //need to write delete file content
-                const notes = JSON.parse(data)
             }
         })
 
@@ -67,7 +66,11 @@ class Controller {
                 newLi.textContent = `${note.title} created`;
                 PerformanceObserverEntryList.append(newLi);
                 //create new note pocket
-                
+                fetch("/notes/:uuid").then (res =>res.json()).then(data => {
+                    data.forEach(note => {
+                        // get rid of the notes
+                    })
+                })
             });
 
         })
