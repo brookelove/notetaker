@@ -7,8 +7,8 @@
     const controller = require('../db.controller.js');
     const fs = require("fs")
     
+     // 1. get all of the notes
     router.get('/notes', (req,res) =>{
-        // 1. get all of the notes
         //2. put them into a new file json file is database 
             //controller that houses all of the functions called
             controller.getNotes()
