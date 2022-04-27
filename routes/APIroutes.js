@@ -3,9 +3,9 @@
     A. GET all the notes 
     B. POST put them into the notes HTML
     C. DELETE one specifc note*/
-
     const router = require('express').Router();
     const controller = require('../db.controller.js');
+    const fs = require("fs")
     
     router.get('/notes', (req,res) =>{
         // 1. get all of the notes
