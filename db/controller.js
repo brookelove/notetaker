@@ -1,4 +1,6 @@
 //require all of the modules that you use
+const { acceptsEncodings } = require('express/lib/request');
+const req = require('express/lib/request');
 const res = require('express/lib/response');
 const fs = require('fs');
 const { format } = require('path');
@@ -9,12 +11,12 @@ const deleteFromFile = util.promisify(fs.deleteFile);
 //can be defined in a read and write method they suppport get, add, and delete make them other methods inside here
 //if you want to delete a note you need a unique idenfitier that is a random number 
     //creates random ids
-const uuid = require ('uuid/v1');
+const uuid = require ('../helpers/uuid');
 
 class Controller {
     getNotes () {
         //interact with the db.json
-        readFromFile ("./db/db.json", "utf-8", (err,data) => {
+        readFromFile ("/db/db.json", "utf-8", (err,data) => {
             if (err) {
                 throw err
             } else {
@@ -26,7 +28,7 @@ class Controller {
     addNotes () {
         /*parameters: have to have data to write note
         take in notes */
-        writeFromFile("./db/db.json", "utf-8", (err,data) => {
+        writeFromFile("/db/db.json", "utf-8", (err,data) => {
             if(err) {
                 throw err;
             } else {
@@ -47,11 +49,13 @@ class Controller {
     deleteNotes () {
            /*parameters: have to have data to write note
         take in notes */
-        deleteFromFile("./db/db.json/", "utf-8", (err, data) => {
+        deleteFromFile("/db/db.json/:uuid", "utf-8", (err, data) => {
             if (err) {
                 throw err;
             } else {
                 //need to write delete file content
+            const rev = req.params.rev || req.querry.rev;
+            acceptsEncodings.remve(req.params.id, rev, handleResult(res));
             }
         })
 
@@ -65,12 +69,12 @@ class Controller {
                 const newLi = document.createElement("li");
                 newLi.textContent = `${note.title} created`;
                 PerformanceObserverEntryList.append(newLi);
-                //create new note pocket
-                fetch("/notes/:uuid").then (res =>res.json()).then(data => {
-                    data.forEach(note => {
-                        // get rid of the notes
-                    })
-                })
+                //create new note pocket?
+                // fetch("/notes/:uuid").then (res =>res.json()).then(data => {
+                //     data.forEach(note => {
+                //         // get rid of the notes
+                //     })
+                // })
             });
 
         })
