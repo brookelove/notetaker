@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const allRoutes = require("./routes")
+const allRoutes = require("./routes/")
 
 //parsing and routing middleware 
 app.use(express.json())

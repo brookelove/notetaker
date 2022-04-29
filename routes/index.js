@@ -3,13 +3,14 @@ const router = express.Router();
 const path = require("path");
 
 // Api routes housed here
-const APIroutes = require("./APIroutes");
-router.use("/",APIroutes);
+const APIroutes = require("./APIroutes.js");
+router.use("/api",APIroutes);
 
 // HTML routes housed here
-const HTMLroutes = require("./APIroutes");
+const HTMLroutes = require("./HTMLroutes.js");
 router.use("/",HTMLroutes);
 
-router.get("/", (req,res) => {
-    res.sendFile(path.join(__dirname, "public/notes.html"))
-})
+// router.get("/", (req,res) => {
+//     res.sendFile(path.join(__dirname, "./public/notes.html"))
+// })
+module.exports = router;
