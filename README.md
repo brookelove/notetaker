@@ -43,7 +43,9 @@
 
 # Mock Up
 
-![Image of Notetaker]()
+![Image of Notetaker](./images/Screen%20Shot%202022-04-29%20at%203.11.43%20PM.png)
+
+[link to website](https://secure-inlet-76823.herokuapp.com/)
 
 # Future
 
